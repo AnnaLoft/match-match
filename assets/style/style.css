@@ -1,0 +1,683 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;500;700&family=Mulish:wght@300;500;700&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* Header */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header {
+    width: 100%;
+    background-color: #C6D8FF;
+}
+
+.wrapper {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.logo {
+    width: 85px;
+    height: 57px;
+}
+.logo:hover .logo-second{
+    color: rgb(142, 192, 250);
+    text-shadow: rgb(238 238 238) 1px 1px 0, rgb(238 238 238) -1px -1px 0, rgb(238 238 238) -1px 1px 0, rgb(238 238 238) 1px -1px 0;
+}
+.logo:hover .logo-first{
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(142 192 250) 1px 1px 0, rgb(142 192 250) -1px -1px 0, rgb(142 192 250) -1px 1px 0, rgb(142 192 250) 1px -1px 0;
+}
+
+
+.logo-link {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+}
+
+.logo-link-wrapper {
+    margin-top: -52px;
+    margin-left: 12px;
+}
+
+.logo-first {
+    color: rgb(142, 192, 250);
+    text-shadow: rgb(238, 238, 238) 1px 1px 0, rgb(238, 238, 238) -1px -1px 0, rgb(238, 238, 238) -1px 1px 0, rgb(238, 238, 238) 1px -1px 0;
+}
+
+.logo-second {
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(142, 192, 250) 1px 1px 0, rgb(142, 192, 250) -1px -1px 0, rgb(142, 192, 250) -1px 1px 0, rgb(142, 192, 250) 1px -1px 0;
+}
+
+.tab-icon {
+    height: 40px;
+}
+
+.header-content-wrapper {
+    height: 70px;
+    width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    cursor: pointer;
+}
+
+.btn_register {
+    width: 207px;
+    height: 36px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #C3FBD8;
+    color: #ffffff;
+    font-style: Medium;
+    font-size: 15px;
+    line-height: 16px;
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+}
+
+.btn_register:hover {
+    background-color: #ade0c1;
+}
+
+.navbar {
+    display: flex;
+    width: 288px;
+    height: 100%;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-right: 669px;
+}
+
+.navbar a:hover {
+    /* opacity: 0.7; */
+    background-color: #bfcff3;
+}
+
+.navbar .navbar li, .picture_settings {
+    width: 96px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.navbar a {
+    color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
+}
+
+.nav_icon {
+    margin-top: 11px;
+    margin-left: 38px;
+    margin-bottom: 9px;
+}
+
+.navbar_about, .navbar_best, .navbar_settings {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/img/ui/lifesaver.png);
+    border-radius: 50%;
+}
+
+.navbar_best {
+    background-image: url(/img/ui/medal.png);
+}
+
+.navbar_settings {
+    background-image: url(/img/ui/settings.png);
+}
+
+.navbar_active {
+    background-color: #bfcff3;
+}
+
+.navbar_text {
+    width: 96px;
+    height: 15px;
+    color: #ffffff;
+    font-family: 'Mulish', sans-serif;
+    font-size: 13px;
+    line-height: 15px;
+    text-decoration: none;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* HOW TO PLAY */
+
+.how-to-play-wrapper {
+    height: 760px;
+    width: 100%;
+}
+
+.htp-content-wrapper {
+    margin-left: auto;
+    width: 1000px;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.htp-board,
+.score,
+.settings {
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 1000px;
+    height: auto;
+    box-shadow: 0 0 10px rgb(138 138 138 / 50%);
+    margin: 50px auto;
+    padding: 46px;
+    color: rgb(103, 101, 128);
+    border-radius: 5px;
+    
+}
+
+.rules-wrapper {
+    position: absolute;
+}
+
+.title-wrapper {
+   
+    position: absolute;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgb(103, 101, 128);
+}
+
+.rule-card {
+    background-color: white;
+    width: 360px;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+#ruleCardFirst {
+    Height: 80px;
+    margin-top: 80px;
+}
+
+#ruleCardSecond {
+    Height: 80px;
+}
+
+#ruleCardThird {
+    Height: 160px;
+}
+
+.rule-card-num {
+    background-color: #C3FBD8;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.num-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    width: 11px;
+    padding-top: 6px;
+}
+
+.num {
+    color: white;
+    font-size: 22px;
+    text-shadow: rgb(184, 212, 245) 1px 1px 0, rgb(184, 212, 245) -1px -1px 0, rgb(184, 212, 245) -1px 1px 0, rgb(184, 212, 245) 1px -1px 0;
+}
+
+.rule-card-txt-wrapper {
+    margin-left: 70px;
+    margin-top: -29px;
+    width: 258px;
+}
+
+.rule-card-num-wrapper {
+    margin-left: 17px;
+    padding-top: 17px;
+}
+
+.rule-card-txt {
+    font-family: 'Mulish', sans-serif;
+    font-style: Regular;
+    color: rgb(35, 34, 44);
+}
+
+.instruction-wrapper {
+    margin-left: 514px;
+    padding-top: 80px;
+}
+
+.settings-btn-wrapper {
+    margin-left: 845px;
+    width: 51px;
+    /* padding-top: 10px; */
+    margin-top: -50px;
+}
+
+.regscreen{
+    height: 175px;
+    box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 24%);
+}
+#btnSettings {
+    width: 60px;
+}
+
+#btnSettings:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#btnSettings:hover~.btnsettings-txt-wrapper p {
+    color: white;
+    text-shadow: rgb(142, 192, 250) 1px 1px 0, rgb(142, 192, 250) -1px -1px 0, rgb(142, 192, 250) -1px 1px 0, rgb(142, 192, 250) 1px -1px 0;
+}
+
+.btnsettings-txt-wrapper {
+    margin-left: -10px;
+    margin-top: 5px;
+    text-transform: uppercase;
+    color: rgb(35, 34, 44);
+}
+
+.collection-pic {
+    margin-left: 515px;
+    margin-top: -26px;
+    width: 235px;
+    box-shadow: 3px 3px 3px 3px rgb(0 0 0 / 24%);
+}
+
+.btnsettings-txt {
+    color: rgb(103, 101, 128);
+}
+
+/* Registration */
+
+.btnSubmit, .btnCancel {
+    width: 100px;
+    height: 40px;
+    margin-right: 20px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #C3FBD8;
+    color: #ffffff;
+    font-style: Medium;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+    text-shadow: rgb(142, 192, 250) 1px 1px 0, rgb(142, 192, 250) -1px -1px 0, rgb(142, 192, 250) -1px 1px 0, rgb(142, 192, 250) 1px -1px 0;
+}
+.btnSubmit__disabled #btnAddUser{
+    background-color: #e0e0e0;
+    pointer-events: none;
+    cursor: not-allowed;
+    text-shadow: rgb(170, 184, 201) 1px 1px 0, rgb(170, 184, 201) -1px -1px 0, rgb(170, 184, 201) -1px 1px 0, rgb(170, 184, 201) 1px -1px 0;
+}
+
+.btnSubmit__disabled{
+    /* background-color: #e0e0e0; */
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+
+.btnCancel {
+    background: rgb(255 235 238);
+    text-shadow: rgb(254 169 185) 1px 1px 0, rgb(254 169 185) -1px -1px 0, rgb(254 169 185)1px 1px 0, rgb(254 169 185) 1px -1px 0;
+}
+
+.btnCancel:hover{
+    background-color:rgb(238, 203, 206);
+}
+
+.btnSubmit:hover{
+    background-color:rgb(165, 177, 236);
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column
+}
+
+.form-board {
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.24);
+    display: flex;
+    width: 610px;
+    border-radius: 5px;
+    height: 440px;
+}
+
+.form-input-field {
+    margin-left: 20px;
+    font-family: 'Mulish', sans-serif;
+    background: rgba(33, 33, 33, 0.08);
+    border-radius: 4px 4px 0px 0px;
+    Width: 328px;
+    Height: 56px;
+    margin-bottom: 15px;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.form-input-field__wrong{
+    background: rgb(255, 228, 228);
+
+}
+.form-input-field__correct{
+background: #e8f0fe;
+}
+.form-title-wrapper {
+    height: 70px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.name__error,  .lastname__error, .email.error{
+    height: 20px;
+    width: 100%;
+}
+.form-title {
+    font-size: 20px;
+    color: rgb(103, 101, 128);
+    font-weight: bold;
+}
+
+.form-input-field::placeholder {
+    font-family: 'Mulish', sans-serif;
+    font-style: 'Regular';
+    font-weight: 100;
+    font-size: 12px;
+}
+
+.userpic {
+    background-image: url(../img/ui/user.png);
+    width: 198px;
+    height: 198px;
+    background-size: cover;
+    margin-top: 90px;
+    margin-left: 40px;
+}
+
+.btn-wrapper {
+    display: inline-flex;
+    margin-left: 20px;
+    margin-top: 20px;
+    place-content: center;
+}
+
+
+/* modal window */
+
+
+.modal {
+    display: block; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 170px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+  
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal__hidden {
+    display: none;
+}
+
+
+.modal-content {
+    position: relative;
+  
+    margin: auto;
+    padding: 0;
+   
+    width: 39%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* Settings */
+
+
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.settings_label,
+.score-title {
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 30px;
+    color: rgb(103, 101, 128);
+}
+
+.settings-form select {
+    width: 256px;
+    font-family: 'Mulish', sans-serif;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 40px;
+    color: rgb(103, 101, 128);
+}
+
+.settings-form select:focus {
+    box-shadow: 0 0 10px rgba(109, 108, 108, 0.5);
+}
+
+
+/* card field */
+
+.cards-board {
+    perspective: 30rem;
+    background-color: rgba(0, 0, 0, 0.05);
+    width: 1000px;
+    box-shadow: 0 0 10px rgba(138, 138, 138, 0.5);
+    margin: 30px auto;
+    padding: 0;
+    min-height: 100hv;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-wrapper {
+    perspective: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2%;
+    flex: 0 0 20%;
+}
+
+.card {
+    position: relative;
+    width: 10rem;
+    height: 12rem;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform-origin: right;
+    transition: all 0.5s;
+    box-shadow: 0 0.1rem 0.25rem rgba(138, 138, 138, 0.5);
+    border-radius: 0.5rem;
+}
+
+.card-pic {
+    position: absolute;
+    background-color: rgb(225, 233, 247);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-image: url(./img/gamepacks/sweets/gummy-bear.png);
+    backface-visibility: hidden;
+    background-size: 9rem 9rem;
+    transform: rotateY(180deg);
+    border-radius: 0.5rem;
+}
+
+/* settings for the rest styles */
+
+/* 
+    <------PINK CARD------->
+    background-color: rgb(247, 225, 229)
+    
+    <------BLUE CARD------->
+    background-color: rgb(225, 233, 247);
+    
+    <------GREEN CARD------->
+    background-color: rgb(224, 250, 216);
+    
+    <------ORANGE CARD------->
+    background-color: rgb(252, 238, 197);
+    */
+
+.card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(./img/gamepacks/sweets/sweets-back.png);
+    background-color: rgb(224, 250, 216);
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-size: 9rem 9rem;
+    backface-visibility: hidden;
+    border-radius: 0.5rem;
+}
+
+/* settings for the rest back-styles */
+
+/* 
+    <------ANIMAL------->
+    background-color: rgb(247, 225, 229)
+    
+    <------MUSIC------->
+    background-color: rgb(225, 233, 247);
+    
+    <------SPACE------->
+    background-color: rgb(252, 238, 197);
+    
+    <------SWEETS------->
+    background-color: rgb(252, 238, 197);
+    */
+
+.card-wrapper:hover .card {
+    transform: translateZ(2rem);
+    box-shadow: 0 0 10px rgba(138, 138, 138, 0.5);
+}
+
+.animated {
+    -webkit-animation-name: flipInY;
+    animation-name: flipInY;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+.open {
+    transform: rotateY(180deg) translateX(-100%);
+    transform-origin: left;
+}
+
+@-webkit-keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    40% {
+        -webkit-transform: perspective(400px) rotateY(-10deg);
+    }
+    70% {
+        -webkit-transform: perspective(400px) rotateY(10deg);
+    }
+    100% {
+        -webkit-transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes flipInY {
+    0% {
+        transform: perspective(400px) rotateY(90deg);
+        opacity: 0;
+    }
+    40% {
+        transform: perspective(400px) rotateY(-10deg);
+    }
+    70% {
+        transform: perspective(400px) rotateY(10deg);
+    }
+    100% {
+        transform: perspective(400px) rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.flipInY {
+    -webkit-backface-visibility: visible !important;
+    -webkit-animation-name: flipInY;
+    backface-visibility: visible !important;
+    animation-name: flipInY;
+}
+
+.timer {
+    width: 240px;
+    height: 50px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(138, 138, 138, 0.5);
+    border-radius: 5px;
+}
+
+.timer-wrapper {
+    width: 100%;
+    text-align: -webkit-center;
+    margin: 1%;
+}
