@@ -1,15 +1,10 @@
-import Event from '../services/event';
 import ICmponent from './IComponent';
 import NavBarButton from './navBarButton';
 
 class Header implements ICmponent {
   public view: string;
 
-  navigationEvent: Event;
-
   constructor() {
-    this.navigationEvent = new Event();
-
     this.view = `
       <header>
       <div class='wrapper'>

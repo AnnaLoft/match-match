@@ -2,7 +2,6 @@ const path = require('path');
 const webpackConfig = require("webpack-typescript-boilerplate")
 
 module.exports = webpackConfig({
-    devtool: 'inline-source-map',
     entryPoints: {
         main: "src/index.ts"
     },

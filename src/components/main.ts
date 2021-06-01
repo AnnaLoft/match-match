@@ -1,15 +1,9 @@
-import Event from '../services/event';
 import ICmponent from './IComponent';
 
 class Main implements ICmponent {
   public view: string;
 
-  navigationEvent: Event;
-
   constructor() {
-    // const modal = new Registration();
-    this.navigationEvent = new Event();
-
     this.view = `
 
       <section id='content'>

@@ -1,8 +1,8 @@
 /* eslint-disable class-methods-use-this */
 import routes from '../services/routes';
+import navigate from '../services/routing';
 import Header from './header';
 import ICmponent from './IComponent';
-import navigate from '../services/routing';
 import Validation from '../services/validation';
 import Registration from './registration';
 
@@ -26,7 +26,7 @@ class Container implements ICmponent {
   db: DataBase;
 
   constructor() {
-    // this.state.updateUser();
+    this.state.updateUser();
   }
 
   public state = {
@@ -44,10 +44,23 @@ class Container implements ICmponent {
         this.state.currentUser = await DataBase.getLocalUser();
         if (this.state.currentUser) {
           const startGame = document.getElementById('btnStartGame');
-          startGame.setAttribute('display', 'block');
-          this.state.toggleModal();
+          startGame.style.setProperty('display', 'block');
+          // Remove register button
+          const regButton = document.getElementById('btnRegistry');
+          regButton.style.setProperty('display', 'none');
         }
       });
+    },
+    registerUser: (newUser: User) => {
+      this.state.currentUser = newUser;
+      this.state.toggleModal();
+      if (this.state.currentUser) {
+        const startGame = document.getElementById('btnStartGame');
+        startGame.style.setProperty('display', 'block');
+        // Remove register button
+        const regButton = document.getElementById('btnRegistry');
+        regButton.style.setProperty('display', 'none');
+      }
     },
     registrationFormValidation: {
       name: false,
@@ -84,21 +97,20 @@ class Container implements ICmponent {
     },
   };
 
-  showPlayButton() {
-    if (this.state.currentUser) {
-      const startGame = document.getElementById('btnStartGame');
-      const modalButton = document.getElementById('btnRegistry');
-      startGame.setAttribute('display', 'block');
-      this.state.toggleModal();
-      modalButton.setAttribute('display', 'none');
-    }
-  }
+  // showPlayButton() {
+  //   if (this.state.currentUser) {
+  //     const startGame = document.getElementById('btnStartGame');
+  //     const modalButton = document.getElementById('btnRegistry');
+  //     startGame.setAttribute('display', 'block');
+  //     this.state.toggleModal();
+  //     modalButton.setAttribute('display', 'none');
+  //   }
+  // }
 
   render() {
     const modal = new Registration();
     this.header = new Header();
 
-    console.log(routes);
     this.view = `
     <div>
         ${this.header.render()}
@@ -323,11 +335,10 @@ class Container implements ICmponent {
   saveNewUser(user: User) {
     // save to db
     const result = DataBase.saveUser(user);
-    if (result) {
-      // update currentUser in state
-      this.state.currentUser = user;
-      console.log(this.state);
-    }
+
+    // update currentUser in state
+    this.state.registerUser(user);
+    console.log(this.state);
   }
 
   handleInput() {
