@@ -32,11 +32,6 @@ class CardContainer implements ICmponent {
     this.cards = [];
   }
 
-  newGame(cards: string[]): void {
-    Container.timer.stopTimer();
-    this.cardsField.clear();
-  }
-
   static updateTime() {
     const timer = document.getElementById('gameTimer');
 
