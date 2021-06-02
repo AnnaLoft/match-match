@@ -53,6 +53,14 @@ class Card implements ICmponent {
     cardBack.setAttribute('background-image', `url(${this.back})`);
     cardBack.setAttribute('background-color', `rgb(${this.backBGColor})`);
   }
+
+  Flip() {
+    const card = document.getElementById(`card__${this.cardId}`);
+    card.classList.toggle('open');
+    // if (card.classList.contains('open')) {
+    //   card.classList.remove('open');
+    // }
+  }
 }
 
 export default Card;

@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 import routes from '../services/routes';
 import navigate from '../services/routing';
 import Header from './header';
@@ -31,6 +30,11 @@ class Container implements ICmponent {
 
   public state = {
     route: '/',
+    updateRoute: (newRoute: string) => {
+      this.setState(() => {
+        this.state.route = newRoute;
+      });
+    },
     modalOpen: false,
     toggleModal: () => {
       this.setState(() => {
@@ -46,9 +50,15 @@ class Container implements ICmponent {
           const startGame = document.getElementById('btnStartGame');
           startGame.style.setProperty('display', 'block');
           // Remove register button
-          const regButton = document.getElementById('btnRegistry');
-          regButton.style.setProperty('display', 'none');
+          // const regButton = document.getElementById('btn_register');
+          // regButton.innerHTML = 'Chamge';
         }
+      });
+    },
+    allPlayers: [] as User[],
+    getAllUsers: () => {
+      this.setState(async () => {
+        this.state.allPlayers = await DataBase.getPlayers();
       });
     },
     registerUser: (newUser: User) => {
@@ -58,8 +68,8 @@ class Container implements ICmponent {
         const startGame = document.getElementById('btnStartGame');
         startGame.style.setProperty('display', 'block');
         // Remove register button
-        const regButton = document.getElementById('btnRegistry');
-        regButton.style.setProperty('display', 'none');
+        // const regButton = document.getElementById('btnRegistry');
+        // regButton.style.setProperty('display', 'none');
       }
     },
     registrationFormValidation: {
@@ -88,24 +98,14 @@ class Container implements ICmponent {
         && this.state.registrationFormValidation.email) {
         this.state.registrationFormValidation.buttonEnabled = true;
 
-        this.formValidation(true);
+        Container.formValidation(true);
       } else {
         this.state.registrationFormValidation.buttonEnabled = false;
 
-        this.formValidation(false);
+        Container.formValidation(false);
       }
     },
   };
-
-  // showPlayButton() {
-  //   if (this.state.currentUser) {
-  //     const startGame = document.getElementById('btnStartGame');
-  //     const modalButton = document.getElementById('btnRegistry');
-  //     startGame.setAttribute('display', 'block');
-  //     this.state.toggleModal();
-  //     modalButton.setAttribute('display', 'none');
-  //   }
-  // }
 
   render() {
     const modal = new Registration();
@@ -113,10 +113,8 @@ class Container implements ICmponent {
 
     this.view = `
     <div>
-        ${this.header.render()}
-        <div id="app">
-          ${routes[window.location.pathname].render()}
-        </div>
+        <div id="headerPlace"></div>
+        <div id="app"></div>
         <div id="modalRegistration" class="modal ${this.state.modalOpen ? '' : 'modal__hidden'}">
         <div class="modal-content">
             ${modal.render()}
@@ -137,6 +135,17 @@ class Container implements ICmponent {
     const body = document.getElementsByTagName('body')[id];
     if (this !== undefined) {
       body.innerHTML = this.render();
+
+      this.header.updateTree(); // Update Header
+      routes[window.location.pathname].updateTree(); // Update App Content
+
+      window.onpopstate = (event: { state: { currentPath: string } }) => {
+        let content = '';
+        if (event.state.currentPath) {
+          content = event.state.currentPath;
+        }
+        this.state.updateRoute(content);
+      };
 
       this.handleInput();
     }
@@ -183,7 +192,7 @@ class Container implements ICmponent {
     });
   }
 
-  formValidation(valid: boolean) {
+  static formValidation(valid: boolean) {
     const btnSubmit = document.getElementById('btnSubmit');
     if (valid) {
       btnSubmit.classList.remove('btnSubmit__disabled');
@@ -264,15 +273,16 @@ class Container implements ICmponent {
     return result;
   }
 
-  handleHeaderLinks() {
+  static handleHeaderLinks() {
     const pageLogoLink = document.getElementById('pageLogo');
     const btnAboutGame = document.getElementById('btnAboutGame');
     const btnBestScore = document.getElementById('btnBestScore');
     const btnGameSettings = document.getElementById('btnGameSettings');
-    const start = document.getElementById('jopka');
-    const bodySettings = document.getElementById('mainBtnSettings');
 
-    const headerButtons = [btnAboutGame, btnBestScore, btnGameSettings, start];
+    // const bodySettings = document.getElementById('mainBtnSettings');
+    const playButton = document.getElementById('btnStartGame');
+
+    const headerButtons = [btnAboutGame, btnBestScore, btnGameSettings, playButton];
 
     pageLogoLink.addEventListener('click', () => {
       headerButtons.map((btn) => btn.classList.remove('navbar_active'));
@@ -302,15 +312,14 @@ class Container implements ICmponent {
       navigate('/settings');
     });
 
-    bodySettings.addEventListener('click', () => {
-      headerButtons.map((btn) => btn.classList.remove('navbar_active'));
-      btnGameSettings.classList.add('navbar_active');
-      navigate('/settings');
-    });
+    // bodySettings.addEventListener('click', () => {
+    //   headerButtons.map((btn) => btn.classList.remove('navbar_active'));
+    //   btnGameSettings.classList.add('navbar_active');
+    //   navigate('/settings');
+    // });
 
-    start.addEventListener('click', () => {
+    playButton.addEventListener('click', () => {
       headerButtons.map((btn) => btn.classList.remove('navbar_active'));
-      start.classList.add('navbar_active');
 
       navigate('/game');
     });
@@ -338,11 +347,10 @@ class Container implements ICmponent {
 
     // update currentUser in state
     this.state.registerUser(user);
-    console.log(this.state);
   }
 
   handleInput() {
-    this.handleHeaderLinks();
+    Container.handleHeaderLinks();
     this.handleModalClick();
     this.modalAction();
     this.formValidateLastName();

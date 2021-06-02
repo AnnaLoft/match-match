@@ -22,17 +22,26 @@ class Header implements ICmponent {
                 ${new NavBarButton('btnAboutGame', 'navbar_about nav_icon ', 'About Game', 'tab navbar_active').render()}
                 ${new NavBarButton('btnBestScore', 'navbar_best nav_icon', 'Best Score', 'tab').render()}
                 ${new NavBarButton('btnGameSettings', 'navbar_settings nav_icon', 'Game Settings', 'tab').render()}
-                ${new NavBarButton('jopka', 'navbar_settings nav_icon', 'Test Game', 'tab').render()}
+              
               </ul>
+              <ul class='buttons'>
               <a id='btnRegistry' onclick='return false;' href='#' style='display: block'>
                   <button class='btn_register'>Register new player</button>
               </a>
-              <a id='btnStartGame' onclick='return false;' href='#' style='display: none'>
+              <a id='btnStartGame' onclick='return false;' href='#' style='display: none;'>
                   <button class='btn_register'> Start Game</button>
               </a>
+              </ul>
           </div>
       </div>
   </header>`;
+  }
+
+  updateTree() {
+    const header = document.getElementById('headerPlace');
+    if (this !== undefined) {
+      header.insertAdjacentHTML('afterbegin', this.render());
+    }
   }
 
   render() {

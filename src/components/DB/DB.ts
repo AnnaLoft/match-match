@@ -66,6 +66,40 @@ export default class DataBase {
     });
   }
 
+  static loadAllData(storeName: string) {
+    return new Promise((resolve, reject) => {
+      const dbRequest = indexedDB.open(storeName);
+
+      dbRequest.onerror = () => {
+        reject(Error('Error text'));
+      };
+
+      dbRequest.onupgradeneeded = (ev) => {
+        const event = ev.target as IDBOpenDBRequest;
+        // Objectstore does not exist. Nothing to load
+        event.transaction.abort();
+        reject(Error('Not found'));
+      };
+
+      dbRequest.onsuccess = (ev) => {
+        const event = ev.target as IDBOpenDBRequest;
+        const database = event.result;
+        const transaction = database.transaction([storeName]);
+        const objectStore = transaction.objectStore(storeName);
+        const objectRequest = objectStore.getAll();
+
+        objectRequest.onerror = () => {
+          reject(Error('Error text'));
+        };
+
+        objectRequest.onsuccess = () => {
+          if (objectRequest.result) resolve(objectRequest.result);
+          else reject(Error('object not found'));
+        };
+      };
+    });
+  }
+
   static saveToIndexedDB(storeName: string, object: User) {
     return new Promise(
       (resolve, reject) => {
@@ -131,5 +165,10 @@ export default class DataBase {
       return result;
     }
     return null;
+  }
+
+  static async getPlayers(): Promise<User[]> {
+    const result = await DataBase.loadAllData('users') as User[];
+    return result;
   }
 }

@@ -1,4 +1,5 @@
 import ICmponent from './IComponent';
+import navigate from '../services/routing';
 
 class Main implements ICmponent {
   public view: string;
@@ -78,8 +79,29 @@ class Main implements ICmponent {
           `;
   }
 
+  updateTree() {
+    const app = document.getElementById('app');
+    if (this !== undefined) {
+      app.insertAdjacentHTML('afterbegin', this.render());
+
+      Main.handleInput();
+    }
+  }
+
   render() {
     return this.view;
+  }
+
+  static handleButtons() {
+    const mainSettings = document.getElementById('mainBtnSettings');
+
+    mainSettings.addEventListener('click', () => {
+      navigate('/settings');
+    });
+  }
+
+  static handleInput() {
+    Main.handleButtons();
   }
 }
 

@@ -1,13 +1,14 @@
 import routes from './routes';
 
 const navigate = (pathname : string): void => {
-  const app = document.getElementById('app');
   window.history.pushState(
-    {},
+    {
+      currentPath: pathname,
+    },
     pathname,
     window.location.origin + pathname,
   );
-  app.innerHTML = routes[pathname].render();
-  if (routes[pathname].update) routes[pathname].update();
+  if (routes[pathname].updateTree) routes[pathname].updateTree();
 };
+
 export default navigate;

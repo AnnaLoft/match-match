@@ -4,8 +4,6 @@ import Card from './card';
 class CardContainer implements ICmponent {
   public view: string;
 
-  private stuff: string;
-
   private cards: Card[] = [];
 
   constructor() {
@@ -19,36 +17,46 @@ class CardContainer implements ICmponent {
 </div>`;
   }
 
+  updateTree() {
+    const app = document.getElementById('app');
+    if (this !== undefined) {
+      app.innerHTML = this.render();
+    }
+  }
+
   render() {
     return this.view;
   }
 
-  update() {
-    console.log(this.stuff = '');
-    const startTime = new Date();
-    startTime.setMinutes(startTime.getMinutes() + 1);
+  clear() {
+    this.cards = [];
+  }
 
-    const countDownDate = new Date(startTime).getTime();
-    const x = setInterval(() => {
-      // Get today's date and time
-      const now = new Date().getTime();
+  newGame(cards: string[]): void {
+    Container.timer.stopTimer();
+    this.cardsField.clear();
+  }
 
-      // Find the distance between now and the count down date
-      const distance = countDownDate - now;
+  static updateTime() {
+    const timer = document.getElementById('gameTimer');
 
-      // Time calculations for days, hours, minutes and seconds
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    timer.innerHTML = `${CardContainer.timer()}`;
+  }
 
-      // Display the result in the element with id="demo"
-      document.getElementById('gameTimer').innerHTML = `${minutes}m ${seconds}s `;
-
-      // If the count down is finished, write some text
-      if (distance < 0) {
-        clearInterval(x);
-        document.getElementById('gameTimer').innerHTML = 'EXPIRED';
-      }
-    }, 1000);
+  static timer() {
+    const timeStart = new Date().getTime();
+    return {
+      /** <integer>s e.g 2s etc. */
+      get seconds() {
+        const seconds = `${Math.ceil((new Date().getTime() - timeStart) / 1000)}s`;
+        return seconds;
+      },
+      /** Milliseconds e.g. 2000ms etc. */
+      get ms() {
+        const ms = `${new Date().getTime() - timeStart}ms`;
+        return ms;
+      },
+    };
   }
 }
 

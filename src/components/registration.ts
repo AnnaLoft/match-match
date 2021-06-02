@@ -39,6 +39,13 @@ class Registration implements ICmponent {
       `;
   }
 
+  updateTree() {
+    const app = document.getElementById('app');
+    if (this !== undefined) {
+      app.innerHTML = this.render();
+    }
+  }
+
   render() {
     return this.view;
   }

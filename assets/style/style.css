@@ -61,7 +61,7 @@ header {
 }
 
 .header-content-wrapper {
-    height: 70px;
+    height: 80px;
     width: 1400px;
     display: flex;
     justify-content: space-between;
@@ -72,9 +72,14 @@ button {
     cursor: pointer;
 }
 
+#btnStartGame{
+    margin-top: 5px;
+}
+
 .btn_register {
     width: 207px;
-    height: 36px;
+    height: 30px;
+ 
     font-family: 'Montserrat', sans-serif;
     background-color: #C3FBD8;
     color: #ffffff;
@@ -187,6 +192,9 @@ button {
     color: rgb(103, 101, 128);
     border-radius: 5px;
     
+}
+.players-list{
+    display: inline-flex;
 }
 
 .rules-wrapper {
